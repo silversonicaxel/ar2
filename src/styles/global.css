@@ -57,10 +57,19 @@ body {
   }
 }
 
-/* cursor-following radial gradient, desktop-only like the old site
-   (which gated it on a mouse/UA check); centered until first mousemove */
+/* cursor-following radial gradient, desktop-only like the old site.
+   Painted on a viewport-fixed layer: the cursor reports viewport
+   coordinates, so the glow tracks it even on a scrolled page */
+.gradient {
+  display: none;
+  inset: 0;
+  position: fixed;
+  z-index: -1;
+}
+
 @media (hover: hover) and (pointer: fine) {
-  body {
+  .gradient {
+    display: block;
     background-image: radial-gradient(
       circle at var(--gradient-position, 50% 50%),
       var(--tertiary-color),
@@ -70,7 +79,7 @@ body {
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-color-scheme: dark) {
-  body {
+  .gradient {
     background-image: radial-gradient(
       circle at var(--gradient-position, 50% 50%),
       var(--tertiary-color),
