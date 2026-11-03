@@ -10,6 +10,8 @@ migrated from the old Vue SPA (see `AR-PLAN.md` for the original rebuild plan).
   at build time (`src/content.config.ts`)
 - **Shiki** syntax highlighting (github-dark) with a copy-to-clipboard button
 - **RSS** (`@astrojs/rss`) + **sitemap** (`@astrojs/sitemap`)
+- **Google Analytics** — same measurement id as the old site (`G-81KW2717WH`),
+  loaded in `src/layouts/BaseLayout.astro`
 - Plain CSS port of the previous design (Share Tech, `#070e14`/`#fafafa`,
   light/dark via `prefers-color-scheme`, cursor-following gradient, skewY motif)
 
@@ -62,4 +64,3 @@ GitHub is the source of truth; the host builds on push. One-time setup:
 - Tag pages (`/blog/tag/[tag]`)
 - Giscus comments (GitHub Discussions-based)
 - Open Graph images per post
-- Analytics (the old site's gtag was not carried over)

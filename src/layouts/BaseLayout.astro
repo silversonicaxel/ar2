@@ -28,6 +28,16 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <link rel="alternate" type="application/rss+xml" title="axel - blog" href="/rss.xml" />
+    <!-- Google Analytics, same measurement id as the old site -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-81KW2717WH"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag('js', new Date());
+      gtag('config', 'G-81KW2717WH');
+    </script>
   </head>
   <body>
     <div class="gradient" aria-hidden="true"></div>
