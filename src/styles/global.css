@@ -183,14 +183,17 @@ main.page::after {
   width: calc(100% - 0.6rem);
 }
 
-/* page title: huge, skewed, with the half-width rule on the right */
+/* page title: huge, skewed, with the half-width rule on the right.
+   Only the vertical margins here: left/right stay `auto` from .content,
+   which centers the box like the old site */
 main.page h1 {
   font-size: 8rem;
+  margin-bottom: 0;
+  margin-top: 0;
   padding-bottom: 5rem;
   padding-top: 5rem;
   position: relative;
   transform: skewY(-3deg);
-  margin: 0;
 }
 
 main.page h1::after {
