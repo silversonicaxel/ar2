@@ -1,0 +1,92 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { formatDate } from '../../utils/format';
+import { readingTime } from '../../utils/readingTime';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog', ({ data }) => !data.draft);
+  const usedSlugs = new Set<string>();
+
+  return posts.map((post) => {
+    const slug = post.id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+    if (usedSlugs.has(slug)) {
+      throw new Error(`Duplicate blog slug "${slug}" — rename one of the posts.`);
+    }
+    usedSlugs.add(slug);
+    return {
+      params: { slug },
+      props: { post }
+    };
+  });
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const { title, description, date, tags, stack, repo, demo } = post.data;
+---
+
+<BaseLayout title={`${title} - axel`} description={description}>
+  <article>
+    <header class="post-header content">
+      <div class="meta">
+        <time datetime={date.toISOString()}>{formatDate(date)}</time>
+        <span> · {readingTime(post.body)} min read</span>
+        {tags.length > 0 && <span> · {tags.map((tag) => `#${tag}`).join(' ')}</span>}
+      </div>
+      <h2>{title}</h2>
+      {(repo || demo) && (
+        <div class="links">
+          {repo && <a href={repo} target="_blank" rel="noopener">repo</a>}
+          {demo && <a href={demo} target="_blank" rel="noopener">demo</a>}
+        </div>
+      )}
+      {stack.length > 0 && (
+        <div class="meta" style="margin-top: 0.75rem;">
+          {stack.map((tech) => `[${tech}]`).join(' ')}
+        </div>
+      )}
+    </header>
+
+    <div class="prose content">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<script>
+  // copy-to-clipboard button on every code block
+  async function copyText(text: string): Promise<boolean> {
+    try {
+      await navigator.clipboard.writeText(text);
+      return true;
+    } catch {
+      // clipboard API unavailable (permissions / non-focus): legacy fallback
+      const helper = document.createElement('textarea');
+      helper.value = text;
+      helper.style.position = 'fixed';
+      helper.style.opacity = '0';
+      document.body.append(helper);
+      helper.select();
+      const ok = document.execCommand('copy');
+      helper.remove();
+      return ok;
+    }
+  }
+
+  for (const pre of document.querySelectorAll('pre')) {
+    const button = document.createElement('button');
+    button.className = 'copy';
+    button.type = 'button';
+    button.textContent = 'copy';
+    button.addEventListener('click', async () => {
+      const code = pre.querySelector('code')?.innerText ?? '';
+      const ok = await copyText(code);
+      button.textContent = ok ? 'copied' : 'error';
+      setTimeout(() => {
+        button.textContent = 'copy';
+      }, 1500);
+    });
+    pre.append(button);
+  }
+</script>

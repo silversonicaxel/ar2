@@ -1,0 +1,82 @@
+---
+const links = [
+  { label: 'home', href: '/' },
+  { label: 'blog', href: '/blog/' },
+  { label: 'contact', href: '/#contact' }
+];
+---
+
+<div class="menu" id="site-menu" data-open="false">
+  <button
+    class="menu-button"
+    type="button"
+    aria-expanded="false"
+    aria-controls="menu-overlay"
+    aria-label="menu"
+  >
+    <span class="bar"></span>
+    <span class="bar"></span>
+    <span class="bar"></span>
+  </button>
+  <nav class="menu-overlay" id="menu-overlay" aria-label="site">
+    {links.map((link, index) => (
+      <a href={link.href} style={`--i: ${index}`}>
+        <span class="braces">&#123; </span>{link.label}<span class="braces"> &#125;</span>
+      </a>
+    ))}
+    <p class="menu-mail">writeme AT alessandrorabitti DOT com</p>
+  </nav>
+</div>
+
+<script>
+  const menu = document.getElementById('site-menu')!;
+  const button = menu.querySelector<HTMLButtonElement>('.menu-button')!;
+  const overlay = menu.querySelector<HTMLElement>('.menu-overlay')!;
+  const focusables = [
+    button,
+    ...Array.from(overlay.querySelectorAll<HTMLAnchorElement>('a'))
+  ];
+
+  function setOpen(open: boolean) {
+    menu.dataset.open = String(open);
+    button.setAttribute('aria-expanded', String(open));
+    document.documentElement.style.overflow = open ? 'hidden' : '';
+    if (open) {
+      focusables[1]?.focus();
+    } else {
+      button.focus();
+    }
+  }
+
+  button.addEventListener('click', () => {
+    setOpen(menu.dataset.open !== 'true');
+  });
+
+  window.addEventListener('keydown', (event) => {
+    if (menu.dataset.open !== 'true') return;
+
+    if (event.key === 'Escape') {
+      setOpen(false);
+      return;
+    }
+
+    if (event.key === 'Tab') {
+      const first = focusables[0];
+      const last = focusables[focusables.length - 1];
+      if (event.shiftKey && document.activeElement === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && document.activeElement === last) {
+        event.preventDefault();
+        first.focus();
+      }
+    }
+  });
+
+  // close before following a link, so in-page anchors can still scroll
+  overlay.addEventListener('click', (event) => {
+    if (event.target instanceof HTMLElement && event.target.closest('a')) {
+      setOpen(false);
+    }
+  });
+</script>

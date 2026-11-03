@@ -1,0 +1,145 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const mainSkills = [
+  'Javascript',
+  'ES6',
+  'Typescript',
+  'React.js',
+  'Node.js',
+  'HTML5',
+  'CSS3',
+  'SASS',
+  'Jest',
+  'Vitest',
+  'Cypress'
+];
+
+const goodSkills = ['Next.js', 'Webpack', 'babel', 'Angular', 'Vue.js', 'Playwright', 'bash'];
+
+const agileSkills = [
+  'Kanban',
+  'Scrum',
+  'Problem solver',
+  'Feedback promoter',
+  'Coaching',
+  'Knowledge sessions promoter'
+];
+
+const curiositySkills = ['Jenkins', 'Docker', 'Python', 'C#', 'Java', 'AI'];
+
+const extraInterests = [
+  'music',
+  'art',
+  'concerts',
+  'museums',
+  'exhibitions',
+  'formula1',
+  'psychology',
+  'health'
+];
+
+const year = new Date().getFullYear();
+---
+
+<BaseLayout title="axel - Alessandro Rabitti" description="Alessandro Rabitti, Italian Frontend Engineer">
+  <div class="home">
+    <h1 class="content">axel</h1>
+
+    <div class="text content">
+      I am Alessandro Rabitti, an Italian Frontend Engineer based in <strike>Reggio Emilia</strike> <strike>Amsterdam</strike> Berlin.
+    </div>
+
+    <div class="separator" style="background-image: url('/images/1-ai.jpg')"></div>
+
+    <div class="text content">
+      I build robust applications based on modern stack and I love to check the evolution of the
+      technologies.
+    </div>
+
+    <div class="text content">
+      My focus is on writing simple, modular and functional <code>code</code>, from smaller to
+      larger projects.
+    </div>
+
+    <div class="text content">
+      I appreciate the logic and technical aspects of the applications I work for.
+    </div>
+
+    <div class="separator" style="background-image: url('/images/2-office.jpg')"></div>
+
+    <div class="text content">
+      I love to be involved in ambitious and challenging projects where I can offer solutions and
+      creativity.
+    </div>
+
+    <div class="text content">
+      I get inspired by working with amazing and open-minded colleagues.
+    </div>
+
+    <div class="separator" style="background-image: url('/images/3-keyboard.jpg')"></div>
+
+    <div class="text content">I am a strong supporter of Agile methodologies.</div>
+
+    <div class="text content">
+      I feel motivated to help Agile transformation in the environment I work for.
+    </div>
+
+    <div class="separator" style="background-image: url('/images/4-code.jpg')"></div>
+
+    <div class="text content skills">
+      <h2>&#123;main&#125;</h2>
+      {mainSkills.map((skill) => <span>{skill}&nbsp;</span>)}
+    </div>
+
+    <div class="text content skills">
+      <h2>&#123;good&#125;</h2>
+      {goodSkills.map((skill) => <span>{skill}&nbsp;</span>)}
+    </div>
+
+    <div class="text content skills">
+      <h2>&#123;agile&#125;</h2>
+      {agileSkills.map((skill) => <span>{skill}&nbsp;</span>)}
+    </div>
+
+    <div class="text content skills">
+      <h2>&#123;curious&#125;</h2>
+      {curiositySkills.map((skill) => <span>{skill}&nbsp;</span>)}
+    </div>
+
+    <div class="separator" style="background-image: url('/images/5-statue.jpg')"></div>
+
+    <div class="text content skills">
+      <h2>&#123;and&#125;</h2>
+      {extraInterests.map((interest) => <span>{interest}&nbsp;</span>)}
+    </div>
+
+    <div class="separator" style="background-image: url('/images/6-contacts.jpg')"></div>
+
+    <div class="text content" id="contact">
+      Interested in having a chat? writeme AT alessandrorabitti DOT com.
+    </div>
+
+    <div class="text content"><a href="/media/CV-AR-EN.pdf" target="_blank" rel="noopener">CV</a></div>
+
+    <div class="text content">
+      <a href="https://www.linkedin.com/in/alessandrorabitti/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+
+    <div class="text content">
+      <a href="https://github.com/silversonicaxel" target="_blank" rel="noopener">github</a>
+    </div>
+
+    <div class="text content">
+      <a href="https://twitter.com/silversonicaxel" target="_blank" rel="noopener">X</a>
+    </div>
+
+    <div class="text content"><a href="mailto:writeme@alessandrorabitti.com">mail</a></div>
+
+    <footer>
+      <p>© copyright <a href="https://alessandrorabitti.com">alessandrorabitti.com</a> {year}</p>
+      <br />
+      <p>~~ thanks Alba &amp; Alfredo ~~</p>
+    </footer>
+  </div>
+</BaseLayout>
