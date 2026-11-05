@@ -52,7 +52,7 @@ const year = new Date().getFullYear();
     <h1 class="content">axel</h1>
 
     <div class="text content">
-      I am Alessandro Rabitti, an Italian Frontend Engineer based in <strike>Reggio Emilia</strike> <strike>Amsterdam</strike> Berlin.
+      I am Alessandro Rabitti, an Italian Frontend Engineer based in <s>Reggio Emilia</s> <s>Amsterdam</s> Berlin.
     </div>
 
     <div class="separator" style="background-image: url('/images/1-ai.jpg')"></div>
@@ -93,29 +93,29 @@ const year = new Date().getFullYear();
     <div class="separator" style="background-image: url('/images/4-code.jpg')"></div>
 
     <div class="text content skills">
-      <h2>&#123;main&#125;</h2>
+      <h2><span aria-hidden="true">&#123;</span>main<span aria-hidden="true">&#125;</span></h2>
       {mainSkills.map((skill) => <span>{skill}&nbsp;</span>)}
     </div>
 
     <div class="text content skills">
-      <h2>&#123;good&#125;</h2>
+      <h2><span aria-hidden="true">&#123;</span>good<span aria-hidden="true">&#125;</span></h2>
       {goodSkills.map((skill) => <span>{skill}&nbsp;</span>)}
     </div>
 
     <div class="text content skills">
-      <h2>&#123;agile&#125;</h2>
+      <h2><span aria-hidden="true">&#123;</span>agile<span aria-hidden="true">&#125;</span></h2>
       {agileSkills.map((skill) => <span>{skill}&nbsp;</span>)}
     </div>
 
     <div class="text content skills">
-      <h2>&#123;curious&#125;</h2>
+      <h2><span aria-hidden="true">&#123;</span>curious<span aria-hidden="true">&#125;</span></h2>
       {curiositySkills.map((skill) => <span>{skill}&nbsp;</span>)}
     </div>
 
     <div class="separator" style="background-image: url('/images/5-statue.jpg')"></div>
 
     <div class="text content skills">
-      <h2>&#123;and&#125;</h2>
+      <h2><span aria-hidden="true">&#123;</span>and<span aria-hidden="true">&#125;</span></h2>
       {extraInterests.map((interest) => <span>{interest}&nbsp;</span>)}
     </div>
 

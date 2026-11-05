@@ -18,10 +18,10 @@ const links = [
     <span class="bar"></span>
     <span class="bar"></span>
   </button>
-  <nav class="menu-overlay" id="menu-overlay" aria-label="site">
+  <nav class="menu-overlay" id="menu-overlay" aria-label="main">
     {links.map((link, index) => (
       <a href={link.href} style={`--i: ${index}`}>
-        <span class="braces">&#123; </span>{link.label}<span class="braces"> &#125;</span>
+        <span class="braces" aria-hidden="true">&#123; </span>{link.label}<span class="braces" aria-hidden="true"> &#125;</span>
       </a>
     ))}
     <p class="menu-mail">writeme AT alessandrorabitti DOT com</p>

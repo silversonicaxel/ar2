@@ -36,14 +36,14 @@ const schema = blogPostingSchema({
 ---
 
 <BaseLayout title={`${title} - axel`} description={description} publishedTime={date} schema={[schema]}>
-  <article>
+  <article aria-labelledby="post-title">
     <header class="post-header content">
       <div class="meta">
         <time datetime={date.toISOString()}>{formatDate(date)}</time>
         <span> · {readingTime(post.body)} min read</span>
         {tags.length > 0 && <span> · {tags.map((tag) => `#${tag}`).join(' ')}</span>}
       </div>
-      <h2>{title}</h2>
+      <h1 class="post-title" id="post-title">{title}</h1>
       {(repo || demo) && (
         <div class="links">
           {repo && <a href={repo} target="_blank" rel="noopener">repo</a>}

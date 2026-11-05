@@ -11,6 +11,9 @@ Conventions:
   `draft: true` hides a post from list/detail/RSS.
 - Styling: prefer extending `src/styles/global.css` over scoped component CSS.
 - Light/dark: always provide the `prefers-color-scheme: dark` counterpart.
+- Accessibility: every page has exactly one `h1` (post titles use
+  `h1.post-title`); decorative braces/icons get `aria-hidden="true"`; the
+  skip link and `.copy:focus-visible` must keep working.
 
 ## Development
 
