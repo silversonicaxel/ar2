@@ -4,7 +4,7 @@ description: "Why I rewrote an old Vue SPA into a static Astro site and how the 
 date: 2026-11-03
 tags: [astro, vue, migration]
 stack: [Astro, TypeScript]
-repo: https://github.com/silversonicaxel
+repo: https://github.com/silversonicaxel/ar2
 draft: false
 ---
 
@@ -17,12 +17,12 @@ need, and publishing anything meant writing Vue components by hand.
 
 The rebuild runs on [Astro](https://astro.build) v7 and stays fully static:
 
-- the home page is the same design, ported to plain CSS — no client framework;
+- the home page is the same design, ported to plain CSS without any client framework;
 - blog posts are plain markdown files in the repo;
 - `astro build` outputs HTML that any static host can serve as-is.
 
 Astro ships zero JavaScript by default, which fits a portfolio perfectly. The
-only scripts left on the page are the ones the design actually wants: the
+only scripts left on the page are the ones used for design purposes: the
 cursor-following gradient and the fullscreen menu toggle.
 
 ## The content pipeline
@@ -52,28 +52,6 @@ const blog = defineCollection({
 export const collections = { blog };
 ```
 
-A missing `title` or a typo'd field fails the build and names the exact file.
-Each post becomes a static page via `getStaticPaths`, with the date prefix
-stripped from the URL, and code fences get [Shiki](https://shiki.style)
-highlighting at build time — free for this blog, since most posts will be
-write-ups of implementations.
-
-## Publishing
-
-The end state is a git push:
-
-```bash
-# one new post
-vim src/content/blog/2026-12-01-next-post.md
-
-# and that is basically it
-git add . && git commit -m "post: next post" && git push
-```
-
-The host builds `dist/` on push and the post is live about a minute later.
-Drafts get `draft: true` and a preview URL from a branch build, and are
-excluded from the list, the detail pages and the RSS feed.
-
-## What is next
-
-Tag pages, maybe comments, and — more importantly — actually writing.
+Each post is automatically turned into a static page at build time using
+`getStaticPaths`. The date is removed from the URL to keep links clean, and
+code snippets are automatically highlighted with [Shiki](https://shiki.style)

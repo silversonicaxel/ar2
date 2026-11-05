@@ -1,0 +1,11 @@
+{
+  // MD013 kept for prose (80 cols), exempt for code blocks and tables:
+  // code must not be wrapped; prose should stay hard-wrapped.
+  "config": {
+    "default": true,
+    "MD013": {
+      "code_blocks": false,
+      "tables": false
+    }
+  }
+}
