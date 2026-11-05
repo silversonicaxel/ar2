@@ -6,9 +6,11 @@ import fontUrl from '../assets/fonts/ShareTech-Regular.woff2';
 interface Props {
   title: string;
   description: string;
+  publishedTime?: Date;
+  schema?: Record<string, unknown>[];
 }
 
-const { title, description } = Astro.props;
+const { title, description, publishedTime, schema } = Astro.props;
 const canonical = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -23,11 +25,20 @@ const canonical = new URL(Astro.url.pathname, Astro.site);
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={publishedTime ? 'article' : 'website'} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
+    <meta property="og:site_name" content="axel - alessandrorabitti.com" />
+    {publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+    <meta name="twitter:card" content="summary" />
+    <meta name="twitter:site" content="@silversonicaxel" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
     <link rel="alternate" type="application/rss+xml" title="axel - blog" href="/rss.xml" />
+    {schema?.map((entry) => (
+      <script is:inline type="application/ld+json" set:html={JSON.stringify(entry)} />
+    ))}
     <!-- Google Analytics, same measurement id as the old site -->
     <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-81KW2717WH"></script>
     <script is:inline>

@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { personSchema, websiteSchema } from '../utils/schema';
 
 const mainSkills = [
   'Javascript',
@@ -42,7 +43,11 @@ const extraInterests = [
 const year = new Date().getFullYear();
 ---
 
-<BaseLayout title="axel - Alessandro Rabitti" description="Alessandro Rabitti, Italian Frontend Engineer">
+<BaseLayout
+  title="axel - Alessandro Rabitti"
+  description="Alessandro Rabitti, Italian Frontend Engineer"
+  schema={[websiteSchema, personSchema]}
+>
   <div class="home">
     <h1 class="content">axel</h1>
 

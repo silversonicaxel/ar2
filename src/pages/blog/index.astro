@@ -3,17 +3,28 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { formatDate } from '../../utils/format';
 import { readingTime } from '../../utils/readingTime';
+import { blogSchema } from '../../utils/schema';
 
 const posts = (await getCollection('blog', ({ data }) => !data.draft)).sort(
   (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
 );
 
 const slugOf = (id: string) => id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
+
+const schema = blogSchema(
+  posts.map((post) => ({
+    title: post.data.title,
+    description: post.data.description,
+    date: post.data.date,
+    url: `https://alessandrorabitti.com/blog/${slugOf(post.id)}/`
+  }))
+);
 ---
 
 <BaseLayout
   title="blog - axel"
   description="Write-ups of implementations, experiments and migrations by Alessandro Rabitti."
+  schema={[schema]}
 >
   <div class="blog">
     <h1 class="content">blog</h1>
