@@ -10,8 +10,7 @@ export const personSchema = {
   jobTitle: 'Frontend Engineer',
   sameAs: [
     'https://github.com/silversonicaxel',
-    'https://www.linkedin.com/in/alessandrorabitti/',
-    'https://twitter.com/silversonicaxel'
+    'https://www.linkedin.com/in/alessandrorabitti/'
   ]
 };
 
