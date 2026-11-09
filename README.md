@@ -33,11 +33,13 @@ public/                    ← favicon, images/, media/CV-AR-EN.pdf
 
 ## Commands
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm run dev`     | Dev server at `localhost:4321`               |
-| `npm run build`   | Production build into `./dist/`              |
-| `npm run preview` | Preview the built site locally               |
+| Command               | Action                                       |
+| :-------------------- | :------------------------------------------- |
+| `npm run dev`         | Dev server at `localhost:4321`               |
+| `npm run build`       | Production build into `./dist/`              |
+| `npm run preview`     | Preview the built site locally               |
+| `npm run lint:md`     | Lint blog markdown (prose @ 80 cols)         |
+| `npm run lint:astro`  | Type-check `.astro`/`.ts` files (`astro check`) |
 
 ## Publishing a post
 

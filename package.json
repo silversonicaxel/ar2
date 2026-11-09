@@ -9,7 +9,8 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "lint": "markdownlint-cli2 \"src/content/blog/*.md\"",
+    "lint:md": "markdownlint-cli2 \"src/content/blog/*.md\"",
+    "lint:astro": "astro check",
     "astro": "astro"
   },
   "dependencies": {
@@ -18,6 +19,8 @@
     "astro": "^7.4.5"
   },
   "devDependencies": {
-    "markdownlint-cli2": "^0.24.0"
+    "@astrojs/check": "^0.9.12",
+    "markdownlint-cli2": "^0.24.0",
+    "typescript": "^6.0.3"
   }
 }

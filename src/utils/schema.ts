@@ -7,7 +7,7 @@ export const personSchema = {
   name: 'Alessandro Rabitti',
   alternateName: 'axel',
   url: SITE_URL,
-  jobTitle: 'Frontend Engineer',
+  jobTitle: 'Senior Frontend Engineer',
   sameAs: [
     'https://github.com/silversonicaxel',
     'https://www.linkedin.com/in/alessandrorabitti/'
@@ -20,7 +20,7 @@ export const websiteSchema = {
   '@id': `${SITE_URL}/#website`,
   url: SITE_URL,
   name: 'axel - alessandrorabitti.com',
-  description: 'Alessandro Rabitti, Italian Frontend Engineer',
+  description: 'Alessandro Rabitti, Senior Frontend Engineer. Frontend touches and Backend magic with React, Next.js, TypeScript and AI.',
   author: { '@id': `${SITE_URL}/#person` }
 };
 
